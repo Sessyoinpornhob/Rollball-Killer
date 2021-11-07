@@ -1,19 +1,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class EnemySightController : MonoBehaviour
 {
-    GameObject _player;
+    [SerializeField] GameObject _player;
 
     //Enemy看到了Player = 从Enemy向Player发射的射线能打到player上 + Player在Enemy的视线碰撞区内
-    public bool Isinsight = false;
-    public bool IsRaid = false;
-    public bool Isseen = false;
+    [SerializeField] bool Isinsight = false;
+    [SerializeField] bool IsRaid = false;
+    [SerializeField] bool Isseen = false;
+
+    //Enemy看到Player后，视线灯的颜色由绿变红
+    Light2D _SightLight;
+    Color SightLightColor;
+    Color SightLightColorGreen;
+    [SerializeField] private float timer = 0f;
+
+    //处理玩家的生命信息的重要游戏物体和脚本
+    public PlayerController CS_PlayerController;
+
 
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
+
+        _SightLight = GetComponent<Light2D>();
+
+        Color SightLightColorGreen = new Color(0.258f, 0.830f, 0.191f, 1f);
+
+        Color SightLightColor = _SightLight.color;
+        
+        Debug.Log(SightLightColor);
     }
 
 
@@ -24,12 +43,22 @@ public class EnemySightController : MonoBehaviour
         if (IsRaid == true && Isinsight == true)
         {
             Isseen = true;
+
+            if (SightLightColor == SightLightColorGreen)
+            {
+                Timer(0.5f);
+
+                _SightLight.color = new Color(212 / 255f, 49 / 255f, 70 / 255f, timer);
+            }
         }
         else
         {
             Isseen = false;
+
+            timer = 0f;
+
+            _SightLight.color = new Color(0.258f, 0.830f, 0.191f, 1f);
         }
-        Debug.Log("Isseen = " + Isseen);
 
     }
 
@@ -62,6 +91,12 @@ public class EnemySightController : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Isinsight = true;
+
+            if (IsRaid == true)
+            {
+                GameObject.Find("Player").GetComponent<PlayerController>().LifeNumber();//这种方法有效但是效率较低
+            }
+
         }
     }
 
@@ -74,5 +109,15 @@ public class EnemySightController : MonoBehaviour
         }
     }
 
+
+    private void Timer(float _seconds)
+    {
+        float _multiple = 1 / _seconds;
+
+        if (timer <= 1)
+        {
+            timer += Time.deltaTime * _multiple;
+        }
+    }
 
 }

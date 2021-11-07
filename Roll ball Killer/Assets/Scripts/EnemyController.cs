@@ -7,28 +7,29 @@ public class EnemyController : MonoBehaviour
 {
     GameObject _player;
     public static int EnemyNum = 0;
-    //CircleCollider2D EnemyCollider2D;
 
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
+        
+        EnemyNum++;
+        //Debug.Log(EnemyNum);
     }
 
-    private void Update()
-    {
-        EnemyNum++;
-    }
 
     void OnCollisionEnter2D(Collision2D collision)//[2D]在这里很重要
     {
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("kill");
-            gameObject.SetActive(false);
+
             EnemyNum--;
+
+            Destroy(gameObject, 0.2f);
+            //gameObject.SetActive(false);
         }
     }
-    //player碰撞到enemy以后将enemy隐藏掉
+    //player碰撞到enemy以后将enemy删除
 
     public void MovetoPlayer()
     {

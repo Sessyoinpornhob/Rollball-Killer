@@ -43,3 +43,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Levelwall
+    uniqueID: 1750881087
+    locked: 0
