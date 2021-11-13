@@ -112,6 +112,7 @@
 -define:ENABLE_LEGACY_INPUT_MANAGER
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
+-r:"Assets/DOTween/DOTween.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.1.23f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.1.23f1/Editor/Data/Managed/UnityEngine/UnityEditor.DeviceSimulatorModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.1.23f1/Editor/Data/Managed/UnityEngine/UnityEditor.dll"
@@ -351,9 +352,18 @@
 -r:"Library/Bee/artifacts/1300b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/UnityEngine.UI.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/VSSettingsProvider.ref.dll"
+"Assets/DOTween/Modules/DOTweenModuleAudio.cs"
+"Assets/DOTween/Modules/DOTweenModulePhysics.cs"
+"Assets/DOTween/Modules/DOTweenModulePhysics2D.cs"
+"Assets/DOTween/Modules/DOTweenModuleSprite.cs"
+"Assets/DOTween/Modules/DOTweenModuleUI.cs"
+"Assets/DOTween/Modules/DOTweenModuleUnityVersion.cs"
+"Assets/DOTween/Modules/DOTweenModuleUtils.cs"
 "Assets/Scripts/EnemyController.cs"
+"Assets/Scripts/EnemyMove.cs"
 "Assets/Scripts/EnemySightController.cs"
 "Assets/Scripts/PlayerController.cs"
+"Assets/Scripts/SceneSwitchManager.cs"
 -langversion:8.0
 
 /deterministic

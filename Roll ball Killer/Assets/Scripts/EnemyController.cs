@@ -31,9 +31,4 @@ public class EnemyController : MonoBehaviour
     }
     //player碰撞到enemy以后将enemy删除
 
-    public void MovetoPlayer()
-    {
-        Debug.Log("好活");
-    }
-
 }

@@ -19,7 +19,7 @@ public class EnemySightController : MonoBehaviour
     [SerializeField] private float timer = 0f;
 
     //处理玩家的生命信息的重要游戏物体和脚本
-    public PlayerController CS_PlayerController;
+    //public PlayerController CS_PlayerController;
 
 
     void Start()
@@ -32,7 +32,7 @@ public class EnemySightController : MonoBehaviour
 
         Color SightLightColor = _SightLight.color;
         
-        Debug.Log(SightLightColor);
+        //Debug.Log(SightLightColor);
     }
 
 
@@ -46,7 +46,7 @@ public class EnemySightController : MonoBehaviour
 
             if (SightLightColor == SightLightColorGreen)
             {
-                Timer(0.5f);
+                Timer(0.1f);
 
                 _SightLight.color = new Color(212 / 255f, 49 / 255f, 70 / 255f, timer);
             }
